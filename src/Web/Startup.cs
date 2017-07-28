@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Server;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Web.Data;
 
 namespace Web
 {
@@ -21,6 +22,8 @@ namespace Web
         {
             services.AddMvc();
 
+            //services.AddDbContext<SchoolContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Create the container builder.
             //var builder = new ContainerBuilder();
             //builder.Populate(services);
@@ -31,7 +34,7 @@ namespace Web
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            //builder.RegisterType<CustomSearch>().As<ICustomSearch>();
+            builder.RegisterType<LibraryContext>().SingleInstance();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
