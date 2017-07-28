@@ -22,11 +22,16 @@ namespace Web
             services.AddMvc();
 
             // Create the container builder.
-            var builder = new ContainerBuilder();
-            builder.Populate(services);
+            //var builder = new ContainerBuilder();
+            //builder.Populate(services);
             //builder.RegisterType<CustomSearch>().As<ICustomSearch>();
 
             //return new AutofacServiceProvider(builder.Build());
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            //builder.RegisterType<CustomSearch>().As<ICustomSearch>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
