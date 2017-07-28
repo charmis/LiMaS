@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Server;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Web
 {
@@ -18,6 +20,13 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Create the container builder.
+            var builder = new ContainerBuilder();
+            builder.Populate(services);
+            //builder.RegisterType<CustomSearch>().As<ICustomSearch>();
+
+            //return new AutofacServiceProvider(builder.Build());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
